@@ -112,6 +112,8 @@ class Trainer(CheckpointRunner):
         for epoch in range(self.epoch_count, self.options.train.num_epochs):
             self.epoch_count += 1
 
+            print("Epoch %i" % (self.epoch_count))
+
             # Create a new data loader for every epoch
             train_data_loader = DataLoader(self.dataset,
                                            batch_size=self.options.train.batch_size * self.options.num_gpus,
