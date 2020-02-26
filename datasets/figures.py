@@ -40,7 +40,8 @@ class Figures(BaseDataset):
     def __getitem__(self, index):
         filename = self.file_names[index]
         label = filename.split('_')[0]
-        with open(filename.replace('.png', '.xyz'), 'r') as f:
+        image_path = os.path.join(self.file_root, filename)
+        with open(image_path.replace('.png', '.xyz'), 'r') as f:
             reader = csv.reader(f, dialect='excel')
             points = []
             normals = []
@@ -48,7 +49,7 @@ class Figures(BaseDataset):
                 row = row.split(' ')
                 points.append(row[:3])
                 normals.append(row[3:])
-        img = io.imread(filename)
+        img = io.imread(image_path)
         img[np.where(img[:, :, 3] == 0)] = 255
         if self.resize_with_constant_border:
             img = transform.resize(img, (config.IMG_SIZE, config.IMG_SIZE),
