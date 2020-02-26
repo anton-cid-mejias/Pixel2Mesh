@@ -41,16 +41,9 @@ class Figures(BaseDataset):
         filename = self.file_names[index]
         label = filename.split('_')[0]
         image_path = os.path.join(self.file_root, filename)
-        with open(image_path.replace('.png', '.xyz'), 'r') as f:
-            reader = csv.reader(f, dialect='excel')
-            points = []
-            normals = []
-            for row in reader:
-                row = row[0].split(' ')
-                points.append(row[:3])
-                print(row[:3])
-                normals.append(row[3:])
-                print(row[3:])
+        pts = pd.read_csv(image_path.replace('.png', '.xyz')).to_numpy()
+        points = pts[:,:3]
+        normals = pts[:,3:]
         img = io.imread(image_path)
         img[np.where(img[:, :, 3] == 0)] = 255
         if self.resize_with_constant_border:
