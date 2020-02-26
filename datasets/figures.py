@@ -48,7 +48,9 @@ class Figures(BaseDataset):
             for row in reader:
                 row = row[0].split(' ')
                 points.append(row[:3])
+                print(row[:3])
                 normals.append(row[3:])
+                print(row[3:])
         img = io.imread(image_path)
         img[np.where(img[:, :, 3] == 0)] = 255
         if self.resize_with_constant_border:
