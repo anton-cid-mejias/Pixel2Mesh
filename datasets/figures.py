@@ -42,7 +42,6 @@ class Figures(BaseDataset):
         label = filename.split('_')[0]
         image_path = os.path.join(self.file_root, filename)
         with open(image_path.replace('.png', '.xyz'), 'r') as f:
-            print("Loading %s..." % (filename))
             reader = csv.reader(f, dialect='excel')
             points = []
             normals = []
