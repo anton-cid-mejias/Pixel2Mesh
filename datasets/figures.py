@@ -46,7 +46,7 @@ class Figures(BaseDataset):
             points = []
             normals = []
             for row in reader:
-                row = row.split(' ')
+                row = row[0].split(' ')
                 points.append(row[:3])
                 normals.append(row[3:])
         img = io.imread(image_path)
