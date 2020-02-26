@@ -71,7 +71,7 @@ class CheckpointRunner(object):
         elif dataset.name == "imagenet":
             return ImageNet(config.IMAGENET_ROOT, "train" if training else "val")
         elif dataset.name == "figures":
-            return Figures(config.SHAPENET_ROOT, dataset.mesh_pos,
+            return Figures(config.FIGURES_ROOT, dataset.mesh_pos,
                            dataset.normalization, dataset.shapenet)
         raise NotImplementedError("Unsupported dataset")
 
