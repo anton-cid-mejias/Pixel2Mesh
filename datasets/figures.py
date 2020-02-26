@@ -29,7 +29,7 @@ class Figures(BaseDataset):
 
         self.file_names = []
         for file in self.class_files:
-            file_path = os.path.join(self.file_root, "figures", file)
+            file_path = os.path.join(self.file_root, file)
             files = pd.read_csv(file_path, delimiter=',')
             self.file_names.extend(np.squeeze(files.values, axis=1).tolist())
 
