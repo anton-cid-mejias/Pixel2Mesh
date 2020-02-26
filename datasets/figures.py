@@ -41,7 +41,7 @@ class Figures(BaseDataset):
         filename = self.file_names[index]
         label = filename.split('_')[0]
         image_path = os.path.join(self.file_root, filename)
-        pts = pd.read_csv(image_path.replace('.png', '.xyz')).to_numpy()
+        pts = pd.read_csv(image_path.replace('.png', '.xyz')).to_numpy().astype(np.float32)
         points = pts[:,:3]
         normals = pts[:,3:]
         img = io.imread(image_path)
