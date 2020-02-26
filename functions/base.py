@@ -9,7 +9,7 @@ from tensorboardX import SummaryWriter
 from torch.utils.data.dataloader import default_collate
 
 import config
-from datasets.figures import Figures
+from datasets.figures import Figures, get_shapenet_collate
 from datasets.imagenet import ImageNet
 from datasets.shapenet import ShapeNet, get_shapenet_collate, ShapeNetImageFolder
 from functions.saver import CheckpointSaver
@@ -77,6 +77,8 @@ class CheckpointRunner(object):
 
     def load_collate_fn(self, dataset, training):
         if dataset.name == "shapenet":
+            return get_shapenet_collate(dataset.shapenet.num_points)
+        if dataset.name == "figures":
             return get_shapenet_collate(dataset.shapenet.num_points)
         else:
             return default_collate

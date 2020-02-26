@@ -67,7 +67,7 @@ test:
   summary_steps: 5
   weighted_mean: false
 train:
-  batch_size: 1
+  batch_size: 2
   checkpoint_steps: 10000
   num_epochs: 2
   shuffle: true
