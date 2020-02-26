@@ -147,8 +147,8 @@ class Trainer(CheckpointRunner):
             self.dump_checkpoint()
 
             # Run validation every test_epochs
-            if self.epoch_count % self.options.train.test_epochs == 0:
-                self.test()
+            #if self.epoch_count % self.options.train.test_epochs == 0:
+                #self.test()
 
             # lr scheduler step
             self.lr_scheduler.step()
