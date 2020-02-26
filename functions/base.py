@@ -9,6 +9,7 @@ from tensorboardX import SummaryWriter
 from torch.utils.data.dataloader import default_collate
 
 import config
+from datasets.figures import Figures
 from datasets.imagenet import ImageNet
 from datasets.shapenet import ShapeNet, get_shapenet_collate, ShapeNetImageFolder
 from functions.saver import CheckpointSaver
@@ -69,6 +70,9 @@ class CheckpointRunner(object):
             return ShapeNetImageFolder(dataset.predict.folder, dataset.normalization, dataset.shapenet)
         elif dataset.name == "imagenet":
             return ImageNet(config.IMAGENET_ROOT, "train" if training else "val")
+        elif dataset.name == "figures":
+            return Figures(config.SHAPENET_ROOT, dataset.mesh_pos,
+                           dataset.normalization, dataset.shapenet)
         raise NotImplementedError("Unsupported dataset")
 
     def load_collate_fn(self, dataset, training):

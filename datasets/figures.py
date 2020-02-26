@@ -13,7 +13,7 @@ import config
 from datasets.base_dataset import BaseDataset
 
 
-class ShapeNet(BaseDataset):
+class Figures(BaseDataset):
     """
     Dataset wrapping images and target meshes for ShapeNet dataset.
     """
@@ -22,7 +22,7 @@ class ShapeNet(BaseDataset):
         super().__init__()
         self.file_root = file_root
 
-        meta_path = os.path.join(self.file_root, "figures", "classes.csv")
+        meta_path = os.path.join(self.file_root, "classes.csv")
         classes_dt = pd.read_csv(meta_path, delimiter=',')
         self.classes = np.squeeze(classes_dt[['classname']].values, axis=1).tolist()
         self.class_files = np.squeeze(classes_dt[['filename']].values, axis=1).tolist()

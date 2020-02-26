@@ -4,6 +4,7 @@ import os
 DATASET_ROOT = "datasets/data"
 SHAPENET_ROOT = os.path.join(DATASET_ROOT, "shapenet")
 IMAGENET_ROOT = os.path.join(DATASET_ROOT, "imagenet")
+FIGURES_ROOT = os.path.join(DATASET_ROOT, "figures")
 
 # ellipsoid path
 ELLIPSOID_PATH = os.path.join(DATASET_ROOT, "ellipsoid/info_ellipsoid.dat")
