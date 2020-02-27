@@ -69,9 +69,9 @@ test:
 train:
   batch_size: 1
   checkpoint_steps: 10000
-  num_epochs: 20
+  num_epochs: 2
   shuffle: true
-  summary_steps: 5
+  summary_steps: 2
   test_epochs: 1
   use_augmentation: false
 version: null
