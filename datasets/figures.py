@@ -60,6 +60,7 @@ class Figures(BaseDataset):
         img = torch.from_numpy(np.transpose(img, (2, 0, 1)))
         img_normalized = self.normalize_img(img) if self.normalization else img
 
+        '''
         print("******************")
         print("Points:")
         print(points)
@@ -70,6 +71,7 @@ class Figures(BaseDataset):
         print("Normalized Image:")
         print(img_normalized)
         print("******************")
+        '''
 
         return {
             "images": img_normalized,
