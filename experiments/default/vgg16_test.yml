@@ -12,7 +12,7 @@ dataset:
   - 0.0
   - -8.0
   name: figures
-  normalization: true
+  normalization: false
   num_classes: 3
   predict:
     folder: /tmp
@@ -69,9 +69,9 @@ test:
 train:
   batch_size: 1
   checkpoint_steps: 10000
-  num_epochs: 110
+  num_epochs: 20
   shuffle: true
-  summary_steps: 50
+  summary_steps: 5
   test_epochs: 1
   use_augmentation: false
 version: null
