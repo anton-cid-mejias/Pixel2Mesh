@@ -73,6 +73,8 @@ class CheckpointRunner(object):
         elif dataset.name == "figures":
             return Figures(config.FIGURES_ROOT, dataset.mesh_pos,
                            dataset.normalization, dataset.shapenet)
+        elif dataset.name == "figures_demo":
+            return ShapeNetImageFolder(dataset.predict.folder, dataset.normalization, dataset.shapenet)
         raise NotImplementedError("Unsupported dataset")
 
     def load_collate_fn(self, dataset, training):
