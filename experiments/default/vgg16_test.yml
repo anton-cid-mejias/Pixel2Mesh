@@ -19,8 +19,8 @@ dataset:
   shapenet:
     num_points: 9000
     resize_with_constant_border: false
-  subset_eval: test_tf
-  subset_train: train_tf
+  subset_eval: test
+  subset_train: train
 log_dir: logs
 log_level: info
 loss:
