@@ -78,7 +78,7 @@ class Figures(BaseDataset):
             "images_orig": img,
             "points": points,
             "normals": normals,
-            "labels": [label],
+            "labels": label,
             "filename": filename,
             "length": length
         }
