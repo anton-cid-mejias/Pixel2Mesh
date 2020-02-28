@@ -12,7 +12,7 @@ dataset:
   - 0.0
   - 0.8
   name: figures
-  normalization: false
+  normalization: true
   num_classes: 4
   predict:
     folder: /tmp
