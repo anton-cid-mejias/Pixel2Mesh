@@ -24,7 +24,7 @@ class Figures(BaseDataset):
 
         meta_path = os.path.join(self.file_root, "classes.csv")
         classes_dt = pd.read_csv(meta_path, delimiter=',')
-        self.classes = np.squeeze(classes_dt[['classname']].values, axis=1).tolist()
+        self.labels = {k : i for i, k in enumerate(np.squeeze(classes_dt[['classname']].values, axis=1).tolist())}
         self.class_files = np.squeeze(classes_dt[['filename']].values, axis=1).tolist()
 
         self.file_names = []
@@ -78,7 +78,7 @@ class Figures(BaseDataset):
             "images_orig": img,
             "points": points,
             "normals": normals,
-            "labels": label,
+            "labels": self.labels[label],
             "filename": filename,
             "length": length
         }
