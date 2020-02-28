@@ -46,7 +46,7 @@ class CheckpointRunner(object):
         self.dataset_collate_fn = self.load_collate_fn(dataset, training)
 
         # by default, epoch_count = step_count = 0
-        self.epoch_count = self.step_count = 0
+        self.epoch_count = self.step_count = self.saver_count = 0
         self.time_start = time.time()
 
         # override this function to define your model, optimizers etc.
@@ -135,6 +135,24 @@ class CheckpointRunner(object):
             for optimizer_name, optimizer in self.optimizers_dict().items():
                 checkpoint[optimizer_name] = optimizer.state_dict()
         self.saver.save_checkpoint(checkpoint, "%06d_%06d" % (self.step_count, self.epoch_count))
+
+    def dump_last_checkpoint(self):
+        checkpoint = {
+            "epoch": self.epoch_count,
+            "total_step_count": self.step_count
+        }
+        for model_name, model in self.models_dict().items():
+            if isinstance(model, torch.nn.DataParallel):
+                checkpoint[model_name] = model.module.state_dict()
+            else:
+                checkpoint[model_name] = model.state_dict()
+            for k, v in list(checkpoint[model_name].items()):
+                if isinstance(v, torch.Tensor) and v.is_sparse:
+                    checkpoint[model_name].pop(k)
+        if self.optimizers_dict() is not None:
+            for optimizer_name, optimizer in self.optimizers_dict().items():
+                checkpoint[optimizer_name] = optimizer.state_dict()
+        self.saver.save_checkpoint(checkpoint, "_%06d" % (self.saver_count))
 
     @property
     def time_elapsed(self):

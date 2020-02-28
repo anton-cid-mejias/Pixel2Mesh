@@ -111,6 +111,7 @@ class Trainer(CheckpointRunner):
         # Run training for num_epochs epochs
         for epoch in range(self.epoch_count, self.options.train.num_epochs):
             self.epoch_count += 1
+            self.saver_count = self.epoch_count % 4
 
             print("Epoch %i" % (self.epoch_count))
 
@@ -140,11 +141,11 @@ class Trainer(CheckpointRunner):
                     self.train_summaries(batch, *out)
 
                 # Save checkpoint every checkpoint_steps steps
-                if self.step_count % self.options.train.checkpoint_steps == 0:
-                    self.dump_checkpoint()
+                #if self.step_count % self.options.train.checkpoint_steps == 0:
+                    #self.dump_checkpoint()
 
             # save checkpoint after each epoch
-            self.dump_checkpoint()
+            self.dump_last_checkpoint()
 
             # Run validation every test_epochs
             if self.epoch_count % self.options.train.test_epochs == 0:
