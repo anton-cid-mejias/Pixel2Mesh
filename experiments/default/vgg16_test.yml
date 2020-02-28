@@ -5,12 +5,12 @@ dataset:
   - 112.0
   - 112.0
   camera_f:
-  - 311.0
-  - 311.0
+  - 311.11
+  - 311.11
   mesh_pos:
   - 0.0
   - 0.0
-  - -8.0
+  - 0.8
   name: figures
   normalization: false
   num_classes: 3
