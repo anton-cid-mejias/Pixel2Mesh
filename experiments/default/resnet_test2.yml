@@ -53,9 +53,9 @@ optim:
   lr: 0.001
   lr_factor: 0.3
   lr_step:
-  - 300
-  - 600
-  - 900
+  - 50
+  - 100
+  - 150
   name: adam
   sgd_momentum: 0.9
   wd: 1.0e-06
@@ -70,7 +70,7 @@ test:
 train:
   batch_size: 1
   checkpoint_steps: 10000
-  num_epochs: 1000
+  num_epochs: 200
   shuffle: true
   summary_steps: 20
   test_epochs: 1
