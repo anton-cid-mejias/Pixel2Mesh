@@ -22,7 +22,7 @@ class Figures(BaseDataset):
         super().__init__()
         self.file_root = file_root
         class_file = "classes.csv"
-        class_file = "classes_pyramid3.csv"
+        #class_file = "classes_pyramid3.csv"
 
         meta_path = os.path.join(self.file_root, class_file)
         classes_dt = pd.read_csv(meta_path, delimiter=',')

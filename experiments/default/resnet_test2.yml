@@ -13,7 +13,7 @@ dataset:
   - 0.8
   name: figures
   normalization: true
-  num_classes: 1
+  num_classes: 4
   predict:
     folder: /tmp
   shapenet:
